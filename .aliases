@@ -1,0 +1,12 @@
+alias venneboksen='ssh -p 4099 magne@192.168.0.164'
+alias venneboksenExt='ssh -p 4099 magne@84.202.201.15'
+
+alias a='alsamixer'
+alias ls='ls --color=auto'
+alias mkdir='mkdir -p'
+alias s='screen -r'
+alias grep='grep --color=auto'
+alias die='shutdown -h now'
+alias rcp='rsync --recursive --verbose --partial --progress'
+alias dfck='df -hl --exclude-type=tmpfs --exclude-type=devtmpfs'
+alias steam='SteamLinux'
