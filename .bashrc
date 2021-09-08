@@ -18,7 +18,7 @@ bind '"\e[B": history-search-forward'
 # Promt-variables
 USERNAME='\u'
 HOST='\h'
-WROKINGDIR='\w'
+WORKINGDIR='\w'
 TITLE='\[]0;\h\a\]'
 BOLD='\e[1m'
 
