@@ -15,13 +15,10 @@ shopt -s histappend
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 
-parse_git_branch() {
-     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-}
-
 # Promt-variables
 USERNAME='\u'
 HOST='\h'
+WROKINGDIR='\w'
 TITLE='\[]0;\h\a\]'
 BOLD='\e[1m'
 
@@ -44,9 +41,24 @@ WHITE='\e[1;97m'
 
 RESET='\e[0;39m'
 
+# Functions for git in promt
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+parse_git_modified() {
+    git status -s 2> /dev/null | wc -l | sed -e 's/[1-9]\+/(M)/' -e 's/0//'
+}
+
+# Default promt
+export PS1="\e${TITLE}${USERNAME}@${HOST}:${WORKINGDIR}\$"
+
 #Local settings
 if [[ -f $HOME/.bashrc-local ]]
 then
     source ~/.bashrc-local
 fi
+
+# Add git branch and status to end of promt
+export PS1="${PS1}\[${BOLD}${LIGHTYELLOW}\]\$(parse_git_branch)\[${RED}\]\$(parse_git_modified)\[${RESET}\]\n"
 
