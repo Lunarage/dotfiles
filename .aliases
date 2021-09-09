@@ -1,8 +1,8 @@
 alias a='alsamixer'
 alias p='pulsemixer'
+alias s='screen -r'
 alias ls='ls -lh --color=auto'
 alias mkdir='mkdir -p'
-alias s='screen -r'
 alias grep='grep --color=auto'
 alias die='shutdown -h now'
 alias rcp='rsync --recursive --verbose --partial --progress'
@@ -10,6 +10,3 @@ alias dfck='df -hl --exclude-type=tmpfs --exclude-type=devtmpfs'
 alias yay='yay --editmenu'
 
 alias more='less'
-
-alias Kerbal='steam steam://rungameid/220200'
-alias SpaceEngineers='steam steam://rungameid/244850'
