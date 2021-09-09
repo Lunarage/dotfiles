@@ -5,8 +5,9 @@
 if [[ -d $HOME/dotfiles ]]
 then
     OUTPUT=$(cd ~/dotfiles && git status -s)
+    COUNT=$(echo "$OUTPUT" | wc -l)
     cd
-    if echo "$OUTPUT" | wc -l > 0
+    if [ "$COUNT" != "0" ]
     then
         echo "Changes to dotfiles:"
         echo "$OUTPUT"
