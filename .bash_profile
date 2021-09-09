@@ -4,14 +4,14 @@
 
 if [[ -d $HOME/dotfiles ]]
 then
-    OUTPUT=$(cd ~/dotfiles && git status -s)
-    COUNT=$(echo "$OUTPUT" | wc -l)
-    cd
+    cd ~/dotfiles
+    COUNT=$(git status -s | wc -l)
     if [ "$COUNT" != "0" ]
     then
         echo "Changes to dotfiles:"
-        echo "$OUTPUT"
+        git status -s
     fi
+    cd
 fi
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
