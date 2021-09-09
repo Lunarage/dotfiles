@@ -63,7 +63,7 @@ bindsym $mod+Print exec --no-startup-id flameshot screen -c
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
