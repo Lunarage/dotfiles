@@ -60,5 +60,5 @@ then
 fi
 
 # Add git branch and status to end of promt
-export PS1="${PS1}\[${BOLD}${LIGHTYELLOW}\]\$(parse_git_branch)\[${RED}\]\$(parse_git_modified)\[${RESET}\]\n"
+export PS1="${PS1}${BOLD}${LIGHTYELLOW}\$(parse_git_branch)${RED}\$(parse_git_modified)${RESET}\n"
 
