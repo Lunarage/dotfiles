@@ -10,7 +10,7 @@ killall -q polybar
 # polybar mybar 2>&1 | tee -a /tmp/polybar.log & disown
 
 # Find Ethernet
-ETH=$(ip link | grep -o -e "enp[0-9a-z]*" -e "state UP" | head -n 1)
+ETH=$(ip link | sed -n "s/^.*\(enp[0-9a-z]*\).*state UP.*$/\1/p" | head -n 1)
 
 # Find all monitors
 if type "xrandr"; then
