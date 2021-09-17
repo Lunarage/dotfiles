@@ -1,14 +1,38 @@
 * {
-  background-color: #282C33;
-  border-color: #2e343f;
-  text-color: #8ca0aa;
+  background: #222222;
+  background-alt: #333333;
+  foreground: #dfdfdf;
+  bordercolor: #333333;
   spacing: 0;
   width: 512px;
+  normal-foreground: @foreground;
+  alternate-normal-foreground: @foreground;
+  border-color: @foreground;
+  text-color: @foreground;
+  background-color: @background;
+}
+
+window {
+    background-color: @background;
+    border: 0;
+    padding: 0;
+}
+
+mainbox {
+    border: 0;
+    padding: 0;
+}
+
+message {
+    border: 0;
+    padding: 0;
 }
 
 inputbar {
-  border: 0 0 1px 0;
+  border: 0;
+  spacing: 0;
   children: [prompt,entry];
+  text-color: @foreground;
 }
 
 prompt {
@@ -17,9 +41,10 @@ prompt {
 }
 
 textbox {
-  background-color: #2e343f;
+  text-color: @foreground;
+  background-color: @background;
+  border-color: @bordercolor;
   border: 0 0 1px 0;
-  border-color: #282C33;
   padding: 8px 16px;
 }
 
@@ -36,10 +61,24 @@ listview {
 }
 
 element {
-  border: 0 0 1px 0;
+  border: 0;
   padding: 16px;
+  background-color: @background;
 }
 
-element selected {
-  background-color: #2e343f;
+element-text {
+  background-color: inherit;
+  text-color: inherit;
+}
+
+element.selected {
+  background-color: @background-alt;
+}
+
+element.selected.active {
+  background-color: @background-alt;
+}
+
+button.selected {
+    background-color: @background-alt;
 }
