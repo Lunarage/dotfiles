@@ -9,13 +9,14 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-for_window [class=".*"] border pixel 3
+for_window [class=".*"] border pixel 2
+gaps inner 16
+gaps outer 0
+smart_gaps on
 
-gaps inner 10
 smart_borders on
 smart_borders no_gaps
-smart_gaps on
-border_radius 8
+border_radius 4
 
 set $mod Mod4
 
@@ -43,6 +44,8 @@ exec --no-startup-id redshift-gtk
 exec --no-startup-id twmnd
 # exec --no-startup-id picom -b --experimental-backend
 exec --no-startup-id autorandr -c
+exec_always --no-startup-id autotiling
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -223,14 +226,14 @@ bindsym $mod+m mode "move"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-    status_command i3status
+# bar {
+#     status_command i3status
 
-    font pango:Ubuntu Mono Regular 16
+#     font pango:Ubuntu Mono Regular 16
 
-    tray_output primary
-    colors {
-        background #2A2A2A
-        statusline #DDDDDD
-    }
-}
+#     tray_output primary
+#     colors {
+#         background #2A2A2A
+#         statusline #DDDDDD
+#     }
+# }
