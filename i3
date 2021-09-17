@@ -10,7 +10,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 for_window [class=".*"] border pixel 2
-gaps inner 16
+gaps inner 12
 gaps outer 0
 smart_gaps on
 
