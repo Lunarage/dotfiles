@@ -49,14 +49,14 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-bindsym XF86AudioPlay exec --no-startup-id playerctl -a play-pause && $refresh_i3status
-bindsym XF86AudioStop exec --no-startup-id playerctl -a stop && $refresh_i3status
-bindsym XF86AudioNext exec --no-startup-id playerctl -a next && $refresh_i3status
-bindsym XF86AudioPrev exec --no-startup-id playerctl -a previous && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioPlay exec --no-startup-id playerctl -a play-pause
+bindsym XF86AudioStop exec --no-startup-id playerctl -a stop
+bindsym XF86AudioNext exec --no-startup-id playerctl -a next
+bindsym XF86AudioPrev exec --no-startup-id playerctl -a previous
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 bindsym Print exec --no-startup-id flameshot gui
