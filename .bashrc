@@ -47,7 +47,7 @@ parse_git_branch() {
 }
 
 parse_git_modified() {
-    git status -s 2> /dev/null | wc -l | sed -e 's/[1-9]\+/(M)/' -e 's/0//'
+    git status -suno 2> /dev/null | wc -l | sed -e 's/[1-9]\+/(M)/' -e 's/0//'
 }
 
 # Default promt
