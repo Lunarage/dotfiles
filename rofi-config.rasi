@@ -5,5 +5,5 @@ configuration {
 	terminal: "alacritty";
 	run-shell-command: "{terminal} -e \"{cmd}\"";
 	sidebar-mode: false;
-	theme: "slate";
 }
+@theme "slate"

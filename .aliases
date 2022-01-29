@@ -1,3 +1,4 @@
+# vim: ft=sh
 alias a='alsamixer'
 alias p='pulsemixer'
 alias s='screen -r'
