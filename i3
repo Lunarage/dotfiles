@@ -72,7 +72,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # lock screen
-bindsym $mod+Ctrl+l exec "lxdm -c USER_SWITCH"
+bindsym $mod+Ctrl+l exec "i3lock-fancy"
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec "rofi -show run"
