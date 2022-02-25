@@ -72,7 +72,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # lock screen
-bindsym $mod+Ctrl+l exec "i3lock-fancy"
+bindsym $mod+Ctrl+l exec "i3lock-fancy-multimonitor -b=10x10"
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec "rofi -show run"
