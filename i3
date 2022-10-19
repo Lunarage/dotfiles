@@ -33,9 +33,10 @@ font pango:Ubuntu Mono Regular 16
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-fancy-multimonitor -b=10x10
 
 # Autostart 
+exec --no-startup-id autorandr -c
 exec --no-startup-id nm-applet
 exec --no-startup-id /home/magne/bin/wallpaper.sh
 exec --no-startup-id blueberry-tray
@@ -43,7 +44,6 @@ exec --no-startup-id flameshot
 exec --no-startup-id redshift-gtk
 exec --no-startup-id twmnd
 # exec --no-startup-id picom -b --experimental-backend
-exec --no-startup-id autorandr -c
 exec_always --no-startup-id autotiling
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
@@ -72,7 +72,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # lock screen
-bindsym $mod+Ctrl+l exec "i3lock-fancy-multimonitor -b=10x10"
+bindsym $mod+Ctrl+l exec "loginctl lock-session"
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec "rofi -show run"
@@ -221,8 +221,46 @@ mode "move" {
     bindsym $mod+m mode "default"
 }
 
+mode "workspace" {
+    bindsym 1 workspace "1" mode "default"
+    bindsym $mod+1 move container to workspace "1" mode "default"
+    bindsym 2 workspace "2" mode "default"
+    bindsym $mod+2 move container to workspace "2" mode "default"
+    bindsym 3 workspace "3" mode "default"
+    bindsym $mod+3 move container to workspace "3" mode "default"
+    bindsym 4 workspace "4" mode "default"
+    bindsym $mod+4 move container to workspace "4" mode "default"
+    bindsym 5 workspace "5" mode "default"
+    bindsym $mod+5 move container to workspace "5" mode "default"
+    bindsym 6 workspace "6" mode "default"
+    bindsym $mod+6 move container to workspace "6" mode "default"
+    bindsym 7 workspace "7" mode "default"
+    bindsym $mod+7 move container to workspace "7" mode "default"
+    bindsym 8 workspace "8" mode "default"
+    bindsym $mod+8 move container to workspace "8" mode "default"
+    bindsym 9 workspace "9" mode "default"
+    bindsym $mod+9 move container to workspace "9" mode "default"
+    bindsym 0 workspace "10" mode "default"
+    bindsym $mod+0 move container to workspace "10" mode "default"
+    bindsym q workspace "q" mode "default"
+    bindsym $mod+q move container to workspace "q" mode "default"
+    bindsym w workspace "w" mode "default"
+    bindsym $mod+w move container to workspace "w" mode "default"
+    bindsym e workspace "e" mode "default"
+    bindsym $mod+e move container to workspace "e" mode "default"
+    bindsym r workspace "r" mode "default"
+    bindsym $mod+r move container to workspace "r" mode "default"
+    bindsym $mod+g mode "default"
+}
+
 bindsym $mod+r mode "resize"
 bindsym $mod+m mode "move"
+bindsym $mod+g mode "workspace"
+
+workspace "q" output DP-2
+workspace "w" output DP-2
+workspace "e" output DP-4
+workspace "r" output DP-4
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
