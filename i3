@@ -36,19 +36,17 @@ font pango:Ubuntu Mono Regular 16
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-fancy-multimonitor -b=10x10
 
 # Autostart 
-exec --no-startup-id autorandr -c
-exec --no-startup-id nm-applet
+# exec --no-startup-id autorandr -c
 exec --no-startup-id /home/magne/bin/wallpaper.sh
-exec --no-startup-id blueberry-tray
-exec --no-startup-id flameshot
-exec --no-startup-id redshift-gtk
-exec --no-startup-id twmnd
+exec nm-applet
+exec blueberry-tray
+exec flameshot
+exec redshift-gtk
 # exec --no-startup-id picom -b --experimental-backend
 exec_always --no-startup-id autotiling
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-# Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
+# Bind media keys
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -59,8 +57,9 @@ bindsym XF86AudioNext exec --no-startup-id playerctl -a next
 bindsym XF86AudioPrev exec --no-startup-id playerctl -a previous
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
-bindsym Print exec --no-startup-id flameshot gui
-bindsym $mod+Print exec --no-startup-id flameshot screen -c
+
+bindsym Print exec -flameshot gui
+bindsym $mod+Print exec flameshot screen -c
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -74,11 +73,11 @@ bindsym $mod+Shift+q kill
 # lock screen
 bindsym $mod+Ctrl+l exec "loginctl lock-session"
 
-# start dmenu (a program launcher)
+# start rofi (a program launcher)
 bindsym $mod+d exec "rofi -show run"
 
 # Unicode Picker
-bindsym $mod+u exec "unipicker --copy --command 'rofi -dmenu'"
+bindsym $mod+u exec "unipicker --copy --command 'rofi -dmenu -p unipicker'"
 bindsym $mod+e exec "rofi -show emoji -modi emoji"
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -102,15 +101,15 @@ bindsym $mod+Shift+l move right
 # bindsym $mod+h split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+# bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+a layout toggle split
+# bindsym $mod+s layout stacking
+# bindsym $mod+w layout tabbed
+# bindsym $mod+a layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -151,8 +150,10 @@ bindsym $mod+0 workspace number $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
@@ -257,10 +258,20 @@ bindsym $mod+r mode "resize"
 bindsym $mod+m mode "move"
 bindsym $mod+g mode "workspace"
 
-workspace "q" output DP-2
-workspace "w" output DP-2
-workspace "e" output DP-4
-workspace "r" output DP-4
+workspace 1 output DP-0
+workspace 2 output DP-0
+workspace 3 output DP-0
+workspace 4 output DP-0
+workspace 5 output DP-0
+workspace 6 output DP-0
+workspace 7 output DP-0
+workspace 8 output DP-0
+workspace 9 output DP-0
+workspace 10 output DP-0
+workspace "q" output DP-4
+workspace "w" output DP-4
+workspace "e" output DP-2
+workspace "r" output DP-2
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)

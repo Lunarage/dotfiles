@@ -12,11 +12,19 @@ killall -q polybar
 # Find Ethernet
 ETH=$(ip link | sed -n "s/^.*\(enp[0-9a-z]*\).*state UP.*$/\1/p" | head -n 1)
 
-# Find all monitors
-if type "xrandr"; then
-    for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-        ETH=$ETH MONITOR=$m polybar --reload mybar 2>&1 | tee -a /tmp/polybar.log & disown &
-    done
-else
-    polybar --reload mybar 2>&1 | tee -a /tmp/polybar.log & disown &
-fi
+# Find Wlan
+WLAN=$(ip link | sed -n "s/^.*\(wlp[0-9a-z]*\).*state UP.*$/\1/p" | head -n 1)
+
+# Find primary monitor
+PRIMARY=$(xrandr --query | grep " connected" | grep "primary" | cut -d" " -f1)
+# Find other monitors
+OTHERS=$(xrandr --query | grep " connected" | grep -v "primary" | cut -d" " -f1)
+
+# Launch on primary monitor
+ETH=$ETH MONITOR=$PRIMARY WLAN=$WLAN polybar --reload mybar 2>&1 | tee -a /tmp/polybar.log & disown &
+sleep 1
+
+# Launch on other monitors
+for monitor in $OTHERS; do
+    ETH=$ETH MONITOR=$monitor WLAN=$WLAN polybar --reload mybar 2>&1 | tee -a /tmp/polybar.log & disown &
+done

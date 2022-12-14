@@ -4,7 +4,7 @@
   foreground: #dfdfdf;
   bordercolor: #333333;
   spacing: 0;
-  width: 512px;
+  width: 540px;
   normal-foreground: @foreground;
   alternate-normal-foreground: @foreground;
   border-color: @foreground;
@@ -54,7 +54,7 @@ entry {
 
 listview {
   lines: 3;
-  fixed-height: 0;
+  fixed-height: true;
   cycle: false;
   margin: 0 0 -1px 0;
   scrollbar: false;
